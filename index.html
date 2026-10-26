@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th" class="h-full bg-stone-950 text-stone-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก - ครัวไทยอิ่มสุข (Krua Thai Im Sook)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#7A0C0C',
+                            reddark: '#4A0505',
+                            gold: '#D4AF37',
+                            goldlight: '#F3E5AB',
+                            cream: '#FAF8F5',
+                            wood: '#2C1A1D'
+                        }
+                    },
+                    fontFamily: { sans: ['Prompt', 'Sarabun', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans min-h-full flex flex-col bg-stone-950 text-stone-200">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-brand-wood/95 backdrop-blur-md border-b border-brand-gold/30 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full border-2 border-brand-gold bg-brand-red flex items-center justify-center shadow-lg">
+                        <i class="fa-solid fa-utensils text-brand-gold text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl md:text-2xl font-bold gold-gradient-text tracking-wide">ครัวไทยอิ่มสุข</h1>
+                        <p class="text-xs text-brand-goldlight/70 tracking-wider">KRUA THAI IM SOOK</p>
+                    </div>
+                </a>
+                <nav class="hidden md:flex space-x-2">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-brand-gold bg-white/10"><i class="fa-solid fa-house mr-2 text-xs"></i>หน้าแรก</a>
+                    <a href="menu.html" class="px-4 py-2 rounded-lg text-sm font-medium hover:text-brand-gold hover:bg-white/5"><i class="fa-solid fa-book-open mr-2 text-xs"></i>เมนูอาหาร</a>
+                    <a href="cart.html" class="px-4 py-2 rounded-lg text-sm font-medium hover:text-brand-gold hover:bg-white/5 relative">
+                        <i class="fa-solid fa-cart-shopping mr-2 text-xs"></i>สั่งอาหาร
+                        <span id="nav-cart-badge" class="hidden absolute -top-1 -right-1 bg-brand-red text-brand-gold font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center border border-brand-gold">0</span>
+                    </a>
+                    <a href="about.html" class="px-4 py-2 rounded-lg text-sm font-medium hover:text-brand-gold hover:bg-white/5"><i class="fa-solid fa-circle-info mr-2 text-xs"></i>เกี่ยวกับเรา</a>
+                    <a href="admin.html" class="px-4 py-2 rounded-lg text-sm font-medium text-amber-400 hover:text-brand-gold hover:bg-white/5"><i class="fa-solid fa-user-gear mr-2 text-xs"></i>ระบบผู้ดูแลร้าน</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <main class="flex-grow">
+        <div class="relative bg-stone-900 overflow-hidden border-b border-brand-gold/20">
+            <div class="absolute inset-0 z-0 opacity-40">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80" alt="Thai Food Banner" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/80 to-transparent"></div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+                <span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/40 text-brand-gold text-sm font-medium mb-4">
+                    <i class="fa-solid fa-crown text-xs"></i><span>ต้นตำรับความอร่อยสืบทอดกว่า 20 ปี</span>
+                </span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-tight mb-4">
+                    ลิ้มรสอาหารไทยแท้ <br><span class="gold-gradient-text">"ครัวไทยอิ่มสุข"</span>
+                </h1>
+                <p class="text-lg text-stone-300 max-w-2xl mb-8 font-light leading-relaxed">
+                    “อร่อยครบเครื่อง รสชาติไทยแท้ ใส่ใจทุกจาน” คัดสรรวัตถุดิบสดใหม่ ปรุงพิถีพิถันทุกขั้นตอน
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="menu.html" class="px-8 py-3.5 bg-gradient-to-r from-brand-gold to-amber-600 text-stone-950 font-bold rounded-full shadow-lg hover:from-amber-400 hover:to-brand-gold transition flex items-center space-x-2">
+                        <i class="fa-solid fa-utensils"></i><span>ดูเมนูอาหาร</span>
+                    </a>
+                    <a href="cart.html" class="px-8 py-3.5 bg-brand-red border border-brand-gold/50 text-white font-semibold rounded-full shadow-lg hover:bg-red-800 transition flex items-center space-x-2">
+                        <i class="fa-solid fa-bag-shopping"></i><span>สั่งอาหารออนไลน์</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- HIGHLIGHTS -->
+        <div class="bg-brand-wood border-y border-brand-gold/20 py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 rounded-xl bg-stone-900/50 border border-brand-gold/10">
+                    <i class="fa-solid fa-leaf text-2xl text-brand-gold mb-2"></i>
+                    <h3 class="font-semibold text-white">วัตถุดิบสดใหม่</h3>
+                </div>
+                <div class="p-4 rounded-xl bg-stone-900/50 border border-brand-gold/10">
+                    <i class="fa-solid fa-fire text-2xl text-brand-gold mb-2"></i>
+                    <h3 class="font-semibold text-white">รสเข้มข้นจัดจ้าน</h3>
+                </div>
+                <div class="p-4 rounded-xl bg-stone-900/50 border border-brand-gold/10">
+                    <i class="fa-solid fa-truck-fast text-2xl text-brand-gold mb-2"></i>
+                    <h3 class="font-semibold text-white">ส่งไวถึงบ้าน</h3>
+                </div>
+                <div class="p-4 rounded-xl bg-stone-900/50 border border-brand-gold/10">
+                    <i class="fa-solid fa-award text-2xl text-brand-gold mb-2"></i>
+                    <h3 class="font-semibold text-white">สะอาด ถูกสุขอนามัย</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURED DISHES -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold gold-gradient-text">เมนูแนะนำประจำร้าน</h2>
+                <div class="w-24 h-1 bg-brand-gold mx-auto my-3 rounded-full"></div>
+            </div>
+            <div id="home-featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+    </main>
+
+    <footer class="bg-brand-wood border-t border-brand-gold/30 py-8 text-center text-xs text-stone-400">
+        <p>&copy; 2026 ครัวไทยอิ่มสุข (Krua Thai Im Sook). All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFeaturedDishes();
+        });
+    </script>
+</body>
+</html>

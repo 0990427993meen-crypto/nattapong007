@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="th" class="h-full bg-stone-950 text-stone-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตะกร้าสินค้า & สั่งอาหาร - ครัวไทยอิ่มสุข</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#7A0C0C',
+                            gold: '#D4AF37',
+                            wood: '#2C1A1D'
+                        }
+                    },
+                    fontFamily: { sans: ['Prompt', 'Sarabun', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans min-h-full flex flex-col bg-stone-950 text-stone-200">
+
+    <header class="sticky top-0 z-40 bg-brand-wood/95 backdrop-blur-md border-b border-brand-gold/30 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full border-2 border-brand-gold bg-brand-red flex items-center justify-center">
+                        <i class="fa-solid fa-utensils text-brand-gold text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold gold-gradient-text">ครัวไทยอิ่มสุข</h1>
+                    </div>
+                </a>
+                <nav class="hidden md:flex space-x-2">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-sm hover:text-brand-gold">หน้าแรก</a>
+                    <a href="menu.html" class="px-4 py-2 rounded-lg text-sm hover:text-brand-gold">เมนูอาหาร</a>
+                    <a href="cart.html" class="px-4 py-2 rounded-lg text-sm text-brand-gold bg-white/10 font-medium relative">
+                        สั่งอาหาร <span id="nav-cart-badge" class="hidden absolute -top-1 -right-1 bg-brand-red text-brand-gold font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center border border-brand-gold">0</span>
+                    </a>
+                    <a href="about.html" class="px-4 py-2 rounded-lg text-sm hover:text-brand-gold">เกี่ยวกับเรา</a>
+                    <a href="admin.html" class="px-4 py-2 rounded-lg text-sm text-amber-400 hover:text-brand-gold">ระบบผู้ดูแลร้าน</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <h2 class="text-3xl font-bold gold-gradient-text border-b border-brand-gold/20 pb-4 mb-8">
+            <i class="fa-solid fa-cart-shopping mr-3"></i>ตะกร้าสินค้า & ยืนยันสั่งซื้อ
+        </h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left: Cart items -->
+            <div class="lg:col-span-7 bg-stone-900 p-6 rounded-2xl border border-brand-gold/20 shadow-xl">
+                <h3 class="text-xl font-semibold text-white mb-4">รายการอาหารในตะกร้า</h3>
+                <div id="cart-list" class="space-y-4"></div>
+                
+                <div class="border-t border-stone-800 pt-4 mt-6 space-y-2 text-sm text-stone-300">
+                    <div class="flex justify-between"><span>ค่าอาหารรวม</span><span id="subtotal-val">0 ฿</span></div>
+                    <div class="flex justify-between"><span>ค่าบริการ/จัดส่ง</span><span id="shipping-val">0 ฿</span></div>
+                    <div class="flex justify-between text-lg font-bold text-brand-gold pt-2 border-t border-stone-800">
+                        <span>สุทธิ</span><span id="grandtotal-val">0 ฿</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Customer Form -->
+            <div class="lg:col-span-5 bg-stone-900 p-6 rounded-2xl border border-brand-gold/20 shadow-xl">
+                <h3 class="text-xl font-semibold text-white mb-4">รายละเอียดผู้สั่งซื้อ</h3>
+                <form id="checkout-form" onsubmit="handleCheckout(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-stone-400 mb-1">รูปแบบการรับประทาน</label>
+                        <select id="order-type" onchange="toggleFormFields()" class="w-full px-4 py-2 bg-stone-800 border border-stone-700 rounded-xl text-white text-sm focus:border-brand-gold">
+                            <option value="dine-in">ทานที่ร้าน (ระบุเลขโต๊ะ)</option>
+                            <option value="takeaway">รับกลับบ้าน</option>
+                            <option value="delivery">จัดส่งเดลิเวอรี่</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-stone-400 mb-1">ชื่อ-นามสกุล *</label>
+                        <input type="text" id="cust-name" required placeholder="คุณสมชาย ใจดี" class="w-full px-4 py-2 bg-stone-800 border border-stone-700 rounded-xl text-white text-sm focus:border-brand-gold">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-stone-400 mb-1">เบอร์โทรศัพท์ *</label>
+                        <input type="tel" id="cust-phone" required placeholder="081-234-5678" class="w-full px-4 py-2 bg-stone-800 border border-stone-700 rounded-xl text-white text-sm focus:border-brand-gold">
+                    </div>
+
+                    <div id="field-table">
+                        <label class="block text-xs text-stone-400 mb-1">หมายเลขโต๊ะ</label>
+                        <input type="text" id="cust-table" placeholder="เช่น โต๊ะ T4" class="w-full px-4 py-2 bg-stone-800 border border-stone-700 rounded-xl text-white text-sm focus:border-brand-gold">
+                    </div>
+
+                    <div id="field-address" class="hidden">
+                        <label class="block text-xs text-stone-400 mb-1">ที่อยู่จัดส่ง *</label>
+                        <textarea id="cust-address" rows="2" placeholder="บ้านเลขที่ ซอย ถนน..." class="w-full px-4 py-2 bg-stone-800 border border-stone-700 rounded-xl text-white text-sm focus:border-brand-gold"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-stone-400 mb-1">หมายเหตุเพิ่มเติม</label>
+                        <input type="text" id="cust-notes" placeholder="เช่น ไม่เผ็ด / แยกน้ำแกง" class="w-full px-4 py-2 bg-stone-800 border border-stone-700 rounded-xl text-white text-sm focus:border-brand-gold">
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-brand-gold to-amber-600 text-stone-950 font-bold rounded-xl shadow-lg hover:from-amber-400 hover:to-brand-gold transition mt-4">
+                        ยืนยันการสั่งซื้อ
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-brand-wood border-t border-brand-gold/30 py-8 text-center text-xs text-stone-400">
+        <p>&copy; 2026 ครัวไทยอิ่มสุข (Krua Thai Im Sook). All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCartPage();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="th" class="h-full bg-stone-950 text-stone-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เมนูอาหาร - ครัวไทยอิ่มสุข</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#7A0C0C',
+                            gold: '#D4AF37',
+                            wood: '#2C1A1D'
+                        }
+                    },
+                    fontFamily: { sans: ['Prompt', 'Sarabun', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans min-h-full flex flex-col bg-stone-950 text-stone-200">
+
+    <header class="sticky top-0 z-40 bg-brand-wood/95 backdrop-blur-md border-b border-brand-gold/30 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-full border-2 border-brand-gold bg-brand-red flex items-center justify-center">
+                        <i class="fa-solid fa-utensils text-brand-gold text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold gold-gradient-text">ครัวไทยอิ่มสุข</h1>
+                    </div>
+                </a>
+                <nav class="hidden md:flex space-x-2">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-sm hover:text-brand-gold">หน้าแรก</a>
+                    <a href="menu.html" class="px-4 py-2 rounded-lg text-sm text-brand-gold bg-white/10 font-medium">เมนูอาหาร</a>
+                    <a href="cart.html" class="px-4 py-2 rounded-lg text-sm hover:text-brand-gold relative">
+                        สั่งอาหาร <span id="nav-cart-badge" class="hidden absolute -top-1 -right-1 bg-brand-red text-brand-gold font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center border border-brand-gold">0</span>
+                    </a>
+                    <a href="about.html" class="px-4 py-2 rounded-lg text-sm hover:text-brand-gold">เกี่ยวกับเรา</a>
+                    <a href="admin.html" class="px-4 py-2 rounded-lg text-sm text-amber-400 hover:text-brand-gold">ระบบผู้ดูแลร้าน</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-brand-gold/20 pb-6 mb-8">
+            <div>
+                <h2 class="text-3xl font-bold gold-gradient-text">รายการเมนูอาหารทั้งหมด</h2>
+                <p class="text-stone-400 text-sm mt-1">คัดสรรวัตถุดิบคุณภาพเพื่อรสชาติไทยแท้ครบทุกหมวดหมู่</p>
+            </div>
+            <div class="relative w-full md:w-80">
+                <input type="text" id="search-input" oninput="filterMenuPage()" placeholder="ค้นหาชื่ออาหาร..." class="w-full pl-10 pr-4 py-2.5 bg-stone-900 border border-brand-gold/30 rounded-xl text-white text-sm focus:outline-none focus:border-brand-gold">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-brand-gold/70 text-sm"></i>
+            </div>
+        </div>
+
+        <!-- Categories Filter -->
+        <div class="flex space-x-2 overflow-x-auto pb-4 mb-8" id="category-filter-bar">
+            <!-- Rendered by JS -->
+        </div>
+
+        <!-- Menu Grid -->
+        <div id="menu-page-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+    </main>
+
+    <footer class="bg-brand-wood border-t border-brand-gold/30 py-8 text-center text-xs text-stone-400">
+        <p>&copy; 2026 ครัวไทยอิ่มสุข (Krua Thai Im Sook). All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCategoryButtons();
+            renderMenuPageGrid();
+        });
+    </script>
+</body>
+</html>
