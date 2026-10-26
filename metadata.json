@@ -1,6 +1,0 @@
-{
-  "name": "เรือนรสไทย - Ruen Ros Thai Heritage Cuisine",
-  "description": "ร้านอาหารไทยต้นตำรับ รังสรรค์สำรับไทยแท้ เมนูอาหารไทยหลากหลาย วัตถุดิบชั้นเลิศ และบรรยากาศเรือนไทยอบอุ่น",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
